@@ -51,7 +51,6 @@ int main()
 			if ((lo = recvfrom(cC, ibuf, sizeof(ibuf), NULL, (sockaddr*)&serv, &lserv)) == SOCKET_ERROR)
 				throw SetErrorMsgText("recvfrom: ", WSAGetLastError());
 			cout << "from server: " << ibuf << "\n";
-			Sleep(5); // to show with 2 clients
 		}
 		if (closesocket(cC) == SOCKET_ERROR)
 			throw SetErrorMsgText("closesocket: ", WSAGetLastError());

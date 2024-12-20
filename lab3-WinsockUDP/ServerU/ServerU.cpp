@@ -34,7 +34,7 @@ int main()
 		int lo = 0;
 		while (true)
 		{
-			memset(&clnt, 0, sizeof(clnt));
+			//memset(&clnt, 0, sizeof(clnt));
 			memset(ibuf, 0, sizeof(ibuf));
 			ibuf[0] = ' ';
 			if ((lb = recvfrom(sS, ibuf, sizeof(ibuf), NULL, (sockaddr*)&clnt, &lclnt)) == SOCKET_ERROR)
@@ -42,6 +42,7 @@ int main()
 			cout << inet_ntoa(clnt.sin_addr) << ":" << htons(clnt.sin_port) << "| msg: " << ibuf << "\n";
 			if ((lo = sendto(sS, ibuf, strlen(ibuf), NULL, (sockaddr*)&clnt, sizeof(clnt))) == SOCKET_ERROR)
 				throw SetErrorMsgText("sendto: ", WSAGetLastError());
+			Sleep(100);
 		}
 		if (closesocket(sS) == SOCKET_ERROR)
 			throw SetErrorMsgText("closesocket: ", WSAGetLastError());

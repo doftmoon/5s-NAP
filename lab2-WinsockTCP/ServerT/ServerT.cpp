@@ -47,6 +47,7 @@ int main()
 			char from[50];
 			int rcL = 0;
 			int sdL = 0;
+			int start = clock();
 			while (true)
 			{
 				memset(from, 0, sizeof(from));
@@ -62,6 +63,8 @@ int main()
 				if ((sdL = send(cS, from, strlen(from), NULL)) == SOCKET_ERROR)
 					throw SetErrorMsgText("send: ", WSAGetLastError());
 			}
+			int end = clock();
+			cout << "Time: " << end - start << "\n";
 		}
 
 		if (closesocket(cS) == SOCKET_ERROR)
